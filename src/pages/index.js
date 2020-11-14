@@ -1,6 +1,7 @@
 import React from "react"
 import { useQuery, useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import './style.css'
 
 const GET_TODOS=gql`{
   todos{
@@ -46,10 +47,10 @@ export default function Home() {
   return <h2>error</h2>
   
   
-return <div>
+return <div className="container">
            
            <label>
-             Add Task <br/>
+              <h3>Add Task</h3>
              <input type="text" ref={node=>{
                inputText =node;
              }} />
@@ -57,7 +58,27 @@ return <div>
            <button onClick={addTask}>Add Task</button>
              <br/> <br/>
    
-      <h2>heading</h2>
+      <h3>My ToDo List</h3>
 
-  {JSON.stringify(data.todos)}</div>
+  {/* {JSON.stringify(data.todos)} */}
+  
+   <table border="2" width="700">
+     <thead>
+       <tr>
+         <th>ID</th>
+         <th>TASK</th>
+         <th>STATUS</th>
+         </tr>
+         </thead>
+     <tbody>
+       {data.todos.map(todo=>{
+         return <tr key={todo.id}>
+           <td>{todo.id}</td>
+           <td>{todo.task}</td>
+           <td>{todo.status.toString()}</td>
+         </tr>
+       })}
+     </tbody>
+   </table>
+  </div>
 }
