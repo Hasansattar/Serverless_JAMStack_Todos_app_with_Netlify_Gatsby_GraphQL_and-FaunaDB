@@ -33,12 +33,25 @@ const resolvers = {
           )
         )
 
-        console.log(result)
-        result[{
-          task:"hello",
-          status:true,
-          id:1
-        }];
+        console.log(result.data)
+        
+      return  result.data.map(d=>{
+          return {
+            id:d.ts,
+            task:d.data.task,
+            status:d.data.status
+          }
+        })
+
+
+
+      // return [{
+          
+      //     id:1,
+      //     task:"hello",
+      //     status:true
+         
+      //   }];
 
       }
       catch (error) {

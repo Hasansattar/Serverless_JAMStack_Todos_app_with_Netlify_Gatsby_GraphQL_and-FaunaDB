@@ -32,13 +32,13 @@ export default function Home() {
       variables:{
         task:inputText.value
       },
-    //   refetchQueries:[{query:GET_TODOS}]
+      refetchQueries:[{query:GET_TODOS}]
     })
     inputText.value="";
   }
 
 
-  const {loading,error,data}=useQuery(GET_TODOS);
+  const { loading, error, data}=useQuery(GET_TODOS);
     
   if(loading)
   return <h2>loading...</h2>
@@ -58,5 +58,6 @@ return <div>
              <br/> <br/>
    
       <h2>heading</h2>
+
   {JSON.stringify(data.todos)}</div>
 }
